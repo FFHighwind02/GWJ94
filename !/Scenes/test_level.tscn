@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bqo7ik2ya1ln2"]
+
+[ext_resource type="PackedScene" uid="uid://dxpi0oq0dvahn" path="res://!/Scenes/player.tscn" id="1_cj4f1"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_cj4f1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tpkq6"]
+albedo_color = Color(0.15952367, 0.1799562, 0.10527884, 1)
+
+[node name="testLevel" type="Node3D" unique_id=1918764291]
+
+[node name="Player" parent="." unique_id=1944024325 instance=ExtResource("1_cj4f1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7980294, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1964457502]
+transform = Transform3D(32, 0, 0, 0, 1, 0, 0, 0, 32, 0, 0, 0)
+mesh = SubResource("BoxMesh_cj4f1")
+surface_material_override/0 = SubResource("StandardMaterial3D_tpkq6")
