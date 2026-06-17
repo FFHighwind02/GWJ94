@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://dofx7hrbqe5ss"]
 
-[node name="CamHandle" type="Node3D" unique_id=274500563]
+[ext_resource type="Script" uid="uid://dmgn6lh6sj0a1" path="res://!/Scripts/camMove.gd" id="1_4rlwa"]
+
+[node name="CamRig" type="Node3D" unique_id=274500563]
+script = ExtResource("1_4rlwa")
 
 [node name="CamPivot" type="Node3D" parent="." unique_id=151742936]
 transform = Transform3D(0.70710677, -0.49999997, 0.49999997, 0, 0.70710677, 0.70710677, -0.70710677, -0.49999997, 0.49999997, 0, 0, 0)

@@ -1,18 +1,64 @@
 [gd_scene format=3 uid="uid://bqo7ik2ya1ln2"]
 
 [ext_resource type="PackedScene" uid="uid://dxpi0oq0dvahn" path="res://!/Scenes/player.tscn" id="1_cj4f1"]
+[ext_resource type="PackedScene" uid="uid://dofx7hrbqe5ss" path="res://!/Scenes/OrthoCam.tscn" id="2_tpkq6"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_cj4f1"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_44cyp"]
+albedo_color = Color(0.33598268, 0.45389342, 0.58690464, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tpkq6"]
+size = Vector3(1.3234863, 0.78759766, 1.3289795)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tpkq6"]
-albedo_color = Color(0.15952367, 0.1799562, 0.10527884, 1)
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Environment" id="Environment_44cyp"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_cgi2c"]
+
+[sub_resource type="Compositor" id="Compositor_fdcfb"]
 
 [node name="testLevel" type="Node3D" unique_id=1918764291]
 
 [node name="Player" parent="." unique_id=1944024325 instance=ExtResource("1_cj4f1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7980294, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9835868, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1964457502]
+[node name="CamRig" parent="." unique_id=274500563 node_paths=PackedStringArray("followTarget") instance=ExtResource("2_tpkq6")]
+transform = Transform3D(1.6906816, 0, 0, 0, 1.4326712, 0, 0, 0, 1.6204101, 0, 0, 0)
+followTarget = NodePath("../Player")
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=945651361]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=1964457502]
 transform = Transform3D(32, 0, 0, 0, 1, 0, 0, 0, 32, 0, 0, 0)
 mesh = SubResource("BoxMesh_cj4f1")
+surface_material_override/0 = SubResource("StandardMaterial3D_44cyp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=1513004794]
+transform = Transform3D(24, 0, 0, 0, 24, 0, 0, 0, 24, 0.043945313, -8.858687, 0.057128906)
+shape = SubResource("BoxShape3D_tpkq6")
+
+[node name="Earth" type="StaticBody3D" parent="." unique_id=1514772760]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.97369003, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Earth" unique_id=1639228846]
+transform = Transform3D(32, 0, 0, 0, 30, 0, 0, 0, 32, 0, -14.408852, 0)
+mesh = SubResource("BoxMesh_cj4f1")
 surface_material_override/0 = SubResource("StandardMaterial3D_tpkq6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Earth" unique_id=566150402]
+transform = Transform3D(24, 0, 0, 0, 24, 0, 0, 0, 24, 0.043945313, -8.858687, 0.057128906)
+shape = SubResource("BoxShape3D_tpkq6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=578004311]
+transform = Transform3D(1, 0, 0, 0, 0.47610006, 0.8793911, 0, -0.8793911, 0.47610006, -4.138651, 22.550676, 12.946105)
+light_color = Color(0.9999992, 0.99391264, 0.7102023, 1)
+light_energy = 0.208
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1660153282]
+environment = SubResource("Environment_44cyp")
+camera_attributes = SubResource("CameraAttributesPractical_cgi2c")
+compositor = SubResource("Compositor_fdcfb")

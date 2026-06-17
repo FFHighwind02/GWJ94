@@ -1,13 +1,15 @@
 [gd_scene format=3 uid="uid://dxpi0oq0dvahn"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xyylc"]
+[ext_resource type="PackedScene" uid="uid://lufv7kcluwlw" path="res://!/Models/TurtlePM.glb" id="1_6ejob"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_6ejob"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_6ejob"]
+size = Vector3(1.7998047, 1, 2.0078125)
 
 [node name="Player" type="CharacterBody3D" unique_id=1944024325]
 
-[node name="Collider" type="CollisionShape3D" parent="." unique_id=1672652299]
-shape = SubResource("CapsuleShape3D_xyylc")
+[node name="TurtlePM" parent="." unique_id=1487320293 instance=ExtResource("1_6ejob")]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0, 0, 0)
 
-[node name="Mesh" type="MeshInstance3D" parent="." unique_id=200294563]
-mesh = SubResource("CapsuleMesh_6ejob")
+[node name="Collider" type="CollisionShape3D" parent="." unique_id=1672652299]
+transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 0, 0.7012259, -0.0703125)
+shape = SubResource("BoxShape3D_6ejob")
