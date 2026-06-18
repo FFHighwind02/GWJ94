@@ -4,7 +4,7 @@ extends Node3D
 # Planned to function similar to a diorama style camera common in 3D isometric strategy games.
 
 # Notice: Attach this script to the camRig component of the OrthoCam scene.
-# Author: @ffhighwind, Version 06/15/26
+# Author: @ffhighwind, Version 06/16/26
 
 # Cam movement vars
 @export var travelSpeed: float = 5.0
